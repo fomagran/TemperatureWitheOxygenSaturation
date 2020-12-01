@@ -8,15 +8,22 @@
 import UIKit
 import FirebaseFirestore
 
-class TestTableViewController: UITableViewController {
+class Spo2TableViewController: UITableViewController {
     @IBOutlet weak var plusBtn: UIBarButtonItem!
     
+    @IBOutlet weak var refreshBtn: UIBarButtonItem!
     //온도 담는 배열
     var spo2Array = [String]()
     //날짜 담는 배열
     var datesArray = [String]()
     var documents = [String]()
     
+    @IBAction func handleRefresh(_ sender: Any) {
+        spo2Array.removeAll()
+        datesArray.removeAll()
+        documents.removeAll()
+        fetchData()
+    }
     
     @IBAction func handlePlus(_ sender: Any) {
         let alert = UIAlertController(title: "산소포화도", message: "추가할 산소 입력", preferredStyle: .alert)
@@ -51,8 +58,11 @@ class TestTableViewController: UITableViewController {
     
     //데이터 받아오기
     func fetchData(){
-        Firestore.firestore().collection("spo2").order(by: "date").getDocuments { (snapshot, _) in
+        Firestore.firestore().collection("spo2").order(by: "date").addSnapshotListener { (snapshot, _) in
             guard let snapshot = snapshot else {return}
+            self.spo2Array.removeAll()
+            self.datesArray.removeAll()
+            self.documents.removeAll()
             for document in snapshot.documents {
                 self.spo2Array.insert(document.get("spo2") as! String, at: 0)
                 self.datesArray.insert(document.get("date") as! String, at: 0)

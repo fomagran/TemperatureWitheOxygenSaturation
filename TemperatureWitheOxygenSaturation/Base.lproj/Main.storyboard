@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="-141" y="-129"/>
         </scene>
-        <!--Test Table View Controller-->
+        <!--Spo2 Table View Controller-->
         <scene sceneID="Q6y-6i-wAN">
             <objects>
-                <tableViewController storyboardIdentifier="TestTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wxl-7p-VPW" customClass="TestTableViewController" customModule="TemperatureWitheOxygenSaturation" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Spo2TableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wxl-7p-VPW" customClass="Spo2TableViewController" customModule="TemperatureWitheOxygenSaturation" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zzs-b6-q2V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,14 +112,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="GLb-Uj-Gh4">
-                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Ywn-uE-84U">
+                        <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="Ywn-uE-84U">
                             <connections>
-                                <action selector="handlePlus:" destination="wxl-7p-VPW" id="JtN-tI-3eM"/>
+                                <action selector="handleRefresh:" destination="wxl-7p-VPW" id="HKV-qe-NRp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="plusBtn" destination="Ywn-uE-84U" id="9s0-ne-qbh"/>
+                        <outlet property="refreshBtn" destination="Ywn-uE-84U" id="Txw-0y-1wo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXN-wL-qe2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -144,7 +145,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

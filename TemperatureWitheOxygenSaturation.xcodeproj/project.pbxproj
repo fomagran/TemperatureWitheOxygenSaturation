@@ -16,7 +16,7 @@
 		04544C41255B837A006DBCAF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04544C40255B837A006DBCAF /* HealthKit.framework */; };
 		045ABC74255BB922007A558A /* TemperatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045ABC73255BB922007A558A /* TemperatureCell.swift */; };
 		04CE0EDA2574EB960048846C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CE0ED92574EB960048846C /* GoogleService-Info.plist */; };
-		04CE0EF22574F4320048846C /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0EF12574F4320048846C /* TestTableViewController.swift */; };
+		04CE0EF22574F4320048846C /* Spo2TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0EF12574F4320048846C /* Spo2TableViewController.swift */; };
 		45C736DC02C4E4BB535B4166 /* Pods_TemperatureWitheOxygenSaturation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D45E9E6EFF4DD1532A7412 /* Pods_TemperatureWitheOxygenSaturation.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +33,7 @@
 		04544C40255B837A006DBCAF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		045ABC73255BB922007A558A /* TemperatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureCell.swift; sourceTree = "<group>"; };
 		04CE0ED92574EB960048846C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		04CE0EF12574F4320048846C /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
+		04CE0EF12574F4320048846C /* Spo2TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spo2TableViewController.swift; sourceTree = "<group>"; };
 		04D45E9E6EFF4DD1532A7412 /* Pods_TemperatureWitheOxygenSaturation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TemperatureWitheOxygenSaturation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607743730E123211866B0EFC /* Pods-TemperatureWitheOxygenSaturation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemperatureWitheOxygenSaturation.debug.xcconfig"; path = "Target Support Files/Pods-TemperatureWitheOxygenSaturation/Pods-TemperatureWitheOxygenSaturation.debug.xcconfig"; sourceTree = "<group>"; };
 		DAFDF59F2D909AC210000E4A /* Pods-TemperatureWitheOxygenSaturation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemperatureWitheOxygenSaturation.release.xcconfig"; path = "Target Support Files/Pods-TemperatureWitheOxygenSaturation/Pods-TemperatureWitheOxygenSaturation.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 				04544C2F255B8322006DBCAF /* LaunchScreen.storyboard */,
 				04544C32255B8322006DBCAF /* Info.plist */,
 				04CE0ED92574EB960048846C /* GoogleService-Info.plist */,
-				04CE0EF12574F4320048846C /* TestTableViewController.swift */,
+				04CE0EF12574F4320048846C /* Spo2TableViewController.swift */,
 			);
 			path = TemperatureWitheOxygenSaturation;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04544C29255B8321006DBCAF /* TemperatureTableViewController.swift in Sources */,
-				04CE0EF22574F4320048846C /* TestTableViewController.swift in Sources */,
+				04CE0EF22574F4320048846C /* Spo2TableViewController.swift in Sources */,
 				04544C25255B8321006DBCAF /* AppDelegate.swift in Sources */,
 				045ABC74255BB922007A558A /* TemperatureCell.swift in Sources */,
 				04544C27255B8321006DBCAF /* SceneDelegate.swift in Sources */,
@@ -302,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -357,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
