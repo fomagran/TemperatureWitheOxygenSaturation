@@ -23,9 +23,17 @@ class TemperatureTableViewController: UITableViewController {
     private let querySample = HKSampleType.quantityType(forIdentifier: .bodyTemperature)!
     
     
+    @IBAction func refreshData(_ sender: Any) {
+        temperatureSamples = []
+        requestAuthorization()
+        tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        requestAuthorization()
+    }
+    
+    func requestAuthorization() {
         if HKHealthStore.isHealthDataAvailable(){
             //  Write Authorize
             let queryTypeArray: Set<HKSampleType> = [queryType]
@@ -98,7 +106,9 @@ class TemperatureTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TemperatureCell", for: indexPath) as! TemperatureCell
-        let (date, temperature) = getTemperatureAndDate(sample: temperatureSamples[indexPath.row])
+        
+        let reverseData = Array(temperatureSamples.reversed())
+        let (date, temperature) = getTemperatureAndDate(sample: reverseData[indexPath.row])
         cell.tempartureLabel.text = String("온도 : \(temperature)".prefix(9)) + String("℃")
         
         let dateFormatter = DateFormatter()

@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040E96282651FEC4003A3D6F /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 040E96272651FEC4003A3D6F /* Charts */; };
+		040E962C2651FF13003A3D6F /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E962B2651FF13003A3D6F /* CircularProgressBar.swift */; };
+		040E962E2652003A003A3D6F /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E962D2652003A003A3D6F /* PatientListViewController.swift */; };
+		040E963026520046003A3D6F /* PatientInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E962F26520046003A3D6F /* PatientInfoViewController.swift */; };
+		040E96322652072B003A3D6F /* PatientInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E96312652072B003A3D6F /* PatientInfoTableViewCell.swift */; };
 		04544C25255B8321006DBCAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04544C24255B8321006DBCAF /* AppDelegate.swift */; };
 		04544C27255B8321006DBCAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04544C26255B8321006DBCAF /* SceneDelegate.swift */; };
 		04544C29255B8321006DBCAF /* TemperatureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04544C28255B8321006DBCAF /* TemperatureTableViewController.swift */; };
@@ -21,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040E962B2651FF13003A3D6F /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		040E962D2652003A003A3D6F /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
+		040E962F26520046003A3D6F /* PatientInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoViewController.swift; sourceTree = "<group>"; };
+		040E96312652072B003A3D6F /* PatientInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoTableViewCell.swift; sourceTree = "<group>"; };
 		04544C21255B8321006DBCAF /* TemperatureWitheOxygenSaturation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemperatureWitheOxygenSaturation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04544C24255B8321006DBCAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04544C26255B8321006DBCAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04544C41255B837A006DBCAF /* HealthKit.framework in Frameworks */,
+				040E96282651FEC4003A3D6F /* Charts in Frameworks */,
 				45C736DC02C4E4BB535B4166 /* Pods_TemperatureWitheOxygenSaturation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +62,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040E96222651FC28003A3D6F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04544C28255B8321006DBCAF /* TemperatureTableViewController.swift */,
+				04CE0EF12574F4320048846C /* Spo2TableViewController.swift */,
+				040E962D2652003A003A3D6F /* PatientListViewController.swift */,
+				040E962F26520046003A3D6F /* PatientInfoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		040E96232651FC2E003A3D6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				045ABC73255BB922007A558A /* TemperatureCell.swift */,
+				040E96312652072B003A3D6F /* PatientInfoTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		040E96242651FC33003A3D6F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		040E96252651FC39003A3D6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		040E96292651FECE003A3D6F /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				04544C24255B8321006DBCAF /* AppDelegate.swift */,
+				04544C26255B8321006DBCAF /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		040E962A2651FEDD003A3D6F /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				04544C2F255B8322006DBCAF /* LaunchScreen.storyboard */,
+				04544C2A255B8321006DBCAF /* Main.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 		04544C18255B8321006DBCAF = {
 			isa = PBXGroup;
 			children = (
@@ -73,17 +135,17 @@
 		04544C23255B8321006DBCAF /* TemperatureWitheOxygenSaturation */ = {
 			isa = PBXGroup;
 			children = (
-				04544C2A255B8321006DBCAF /* Main.storyboard */,
+				040E962A2651FEDD003A3D6F /* StoryBoard */,
+				040E96292651FECE003A3D6F /* Delegate */,
+				040E96252651FC39003A3D6F /* Model */,
+				040E96242651FC33003A3D6F /* ViewModel */,
+				040E96232651FC2E003A3D6F /* View */,
+				040E96222651FC28003A3D6F /* Controller */,
 				04544C3E255B837A006DBCAF /* TemperatureWitheOxygenSaturation.entitlements */,
-				04544C24255B8321006DBCAF /* AppDelegate.swift */,
-				04544C26255B8321006DBCAF /* SceneDelegate.swift */,
-				045ABC73255BB922007A558A /* TemperatureCell.swift */,
-				04544C28255B8321006DBCAF /* TemperatureTableViewController.swift */,
 				04544C2D255B8322006DBCAF /* Assets.xcassets */,
-				04544C2F255B8322006DBCAF /* LaunchScreen.storyboard */,
 				04544C32255B8322006DBCAF /* Info.plist */,
 				04CE0ED92574EB960048846C /* GoogleService-Info.plist */,
-				04CE0EF12574F4320048846C /* Spo2TableViewController.swift */,
+				040E962B2651FF13003A3D6F /* CircularProgressBar.swift */,
 			);
 			path = TemperatureWitheOxygenSaturation;
 			sourceTree = "<group>";
@@ -124,6 +186,9 @@
 			dependencies = (
 			);
 			name = TemperatureWitheOxygenSaturation;
+			packageProductDependencies = (
+				040E96272651FEC4003A3D6F /* Charts */,
+			);
 			productName = TemperatureWitheOxygenSaturation;
 			productReference = 04544C21255B8321006DBCAF /* TemperatureWitheOxygenSaturation.app */;
 			productType = "com.apple.product-type.application";
@@ -151,6 +216,9 @@
 				Base,
 			);
 			mainGroup = 04544C18255B8321006DBCAF;
+			packageReferences = (
+				040E96262651FEC4003A3D6F /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 04544C22255B8321006DBCAF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -223,9 +291,13 @@
 			files = (
 				04544C29255B8321006DBCAF /* TemperatureTableViewController.swift in Sources */,
 				04CE0EF22574F4320048846C /* Spo2TableViewController.swift in Sources */,
+				040E963026520046003A3D6F /* PatientInfoViewController.swift in Sources */,
 				04544C25255B8321006DBCAF /* AppDelegate.swift in Sources */,
+				040E962E2652003A003A3D6F /* PatientListViewController.swift in Sources */,
 				045ABC74255BB922007A558A /* TemperatureCell.swift in Sources */,
 				04544C27255B8321006DBCAF /* SceneDelegate.swift in Sources */,
+				040E962C2651FF13003A3D6F /* CircularProgressBar.swift in Sources */,
+				040E96322652072B003A3D6F /* PatientInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +503,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		040E96262651FEC4003A3D6F /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		040E96272651FEC4003A3D6F /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040E96262651FEC4003A3D6F /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04544C19255B8321006DBCAF /* Project object */;
 }
