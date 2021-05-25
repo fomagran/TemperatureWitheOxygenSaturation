@@ -10,7 +10,9 @@ import Charts
 import FirebaseFirestore
 
 class ChartViewController: UIViewController {
-
+    
+    var name:String!
+    
     //MARK:- IBOutlets
     
     @IBOutlet weak var chartView: LineChartView!
@@ -18,108 +20,73 @@ class ChartViewController: UIViewController {
     //MARK:- Life Cycle
     
     override func viewDidLoad() {
-          super.viewDidLoad()
-
-          // Do any additional setup after loading the view.
-          self.title = "Line Chart 1"
-  
-
-          chartView.delegate = self
-
-          chartView.chartDescription.enabled = false
-          chartView.dragEnabled = true
-          chartView.setScaleEnabled(true)
-          chartView.pinchZoomEnabled = true
-
-          // x-axis limit line
-          let llXAxis = ChartLimitLine(limit: 10, label: "Index 10")
-          llXAxis.lineWidth = 4
-          llXAxis.lineDashLengths = [10, 10, 0]
-          llXAxis.labelPosition = .rightBottom
-          llXAxis.valueFont = .systemFont(ofSize: 10)
-
-          chartView.xAxis.gridLineDashLengths = [10, 10]
-          chartView.xAxis.gridLineDashPhase = 0
-
-          let ll1 = ChartLimitLine(limit: 150, label: "Upper Limit")
-          ll1.lineWidth = 4
-          ll1.lineDashLengths = [5, 5]
-          ll1.labelPosition = .rightTop
-          ll1.valueFont = .systemFont(ofSize: 10)
-
-          let ll2 = ChartLimitLine(limit: -30, label: "Lower Limit")
-          ll2.lineWidth = 4
-          ll2.lineDashLengths = [5,5]
-          ll2.labelPosition = .rightBottom
-          ll2.valueFont = .systemFont(ofSize: 10)
-
-          let leftAxis = chartView.leftAxis
-          leftAxis.removeAllLimitLines()
-          leftAxis.addLimitLine(ll1)
-          leftAxis.addLimitLine(ll2)
-          leftAxis.axisMaximum = 200
-          leftAxis.axisMinimum = -50
-          leftAxis.gridLineDashLengths = [5, 5]
-          leftAxis.drawLimitLinesBehindDataEnabled = true
-
-          chartView.rightAxis.enabled = false
-
-          chartView.legend.form = .line
-
-          chartView.animate(xAxisDuration: 2.5)
+        super.viewDidLoad()
         
-        setDataCount(2, range: 2)
+        //          self.title = name
+
+        setChartView()
         
-      }
+        
+    }
     
-    func setDataCount(_ count: Int, range: UInt32) {
-           let values = (0..<count).map { (i) -> ChartDataEntry in
-               let val = Double(arc4random_uniform(range) + 3)
-            return ChartDataEntry(x: Double(i), y: val, icon: .none)
-           }
-
-           let set1 = LineChartDataSet(entries: values, label: "SpO2")
-           set1.drawIconsEnabled = false
-           setup(set1)
-
-           let value = ChartDataEntry(x: Double(3), y: 3)
+    func setChartView() {
+        chartView.delegate = self
+        chartView.backgroundColor = .black
+        chartView.chartDescription.enabled = false
+        chartView.rightAxis.enabled = false
+        chartView.animate(xAxisDuration: 2.5)
+        setDataCount()
+    }
+    
+    func setDataCount() {
         
-           set1.addEntryOrdered(value)
-
-           let data = LineChartData(dataSet: set1)
-
-           chartView.data = data
-       }
+        let c1 = ChartDataEntry(x: Double(3), y: 1, icon: .none)
+        let c2 = ChartDataEntry(x: Double(5), y: 2, icon: .none)
+        let c3 = ChartDataEntry(x: Double(7), y: 3, icon: .none)
+        
+        let set1 = LineChartDataSet(entries: [c1,c2,c3], label: "SpO2")
+        
+        let d1 = ChartDataEntry(x: Double(3), y: 10, icon: .none)
+        let d2 = ChartDataEntry(x: Double(5), y: 20, icon: .none)
+        let d3 = ChartDataEntry(x: Double(7), y: 30, icon: .none)
+        
+        let set2 = LineChartDataSet(entries: [d1,d2,d3], label: "Temperature")
+        
+        let q1 = ChartDataEntry(x: Double(3), y: 50, icon: .none)
+        let q2 = ChartDataEntry(x: Double(5), y: 30, icon: .none)
+        let q3 = ChartDataEntry(x: Double(7), y: 70, icon: .none)
+        
+        let set3 = LineChartDataSet(entries: [q1,q2,q3], label: "BPM")
+        
+        
+        setup(set1)
+        
+        setup(set2)
+        
+        setup(set3)
+        
+        let data =  LineChartData(dataSets: [set1,set2,set3])
+        
+        chartView.data = data
+        
+    }
     
     private func setup(_ dataSet: LineChartDataSet) {
-          if dataSet.isDrawLineWithGradientEnabled {
-              dataSet.lineDashLengths = nil
-              dataSet.highlightLineDashLengths = nil
-              dataSet.setColors(.black, .red, .white)
-              dataSet.setCircleColor(.black)
-              dataSet.gradientPositions = [0, 40, 100]
-              dataSet.lineWidth = 1
-              dataSet.circleRadius = 3
-              dataSet.drawCircleHoleEnabled = false
-              dataSet.valueFont = .systemFont(ofSize: 9)
-              dataSet.formLineDashLengths = nil
-              dataSet.formLineWidth = 1
-              dataSet.formSize = 15
-          } else {
-              dataSet.lineDashLengths = [5, 2.5]
-              dataSet.highlightLineDashLengths = [5, 2.5]
-              dataSet.setColor(.black)
-              dataSet.setCircleColor(.black)
-              dataSet.gradientPositions = nil
-              dataSet.lineWidth = 1
-              dataSet.circleRadius = 3
-              dataSet.drawCircleHoleEnabled = false
-              dataSet.valueFont = .systemFont(ofSize: 9)
-              dataSet.formLineDashLengths = [5, 2.5]
-              dataSet.formLineWidth = 1
-              dataSet.formSize = 15
-          }
-      }
+        
+        if dataSet.label == "SpO2" {
+            dataSet.setColor(.red)
+        }else if dataSet.label == "Temperature" {
+            dataSet.setColor(.blue)
+        }else if dataSet.label == "BPM" {
+            dataSet.setColor(.green)
+        }
+        
+        dataSet.valueTextColor = .white
+        dataSet.setCircleColor(.black)
+        dataSet.lineWidth = 1
+        dataSet.circleRadius = 3
+    }
+    
 }
 
 extension ChartViewController:ChartViewDelegate {
