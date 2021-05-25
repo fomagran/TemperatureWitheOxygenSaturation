@@ -12,6 +12,9 @@
 		040E962E2652003A003A3D6F /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E962D2652003A003A3D6F /* PatientListViewController.swift */; };
 		040E963026520046003A3D6F /* PatientInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E962F26520046003A3D6F /* PatientInfoViewController.swift */; };
 		040E96322652072B003A3D6F /* PatientInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E96312652072B003A3D6F /* PatientInfoTableViewCell.swift */; };
+		042392E8265C99A800D8A6DF /* AverageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042392E7265C99A800D8A6DF /* AverageTableViewController.swift */; };
+		042392EA265C9B4B00D8A6DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 042392E9265C9B4B00D8A6DF /* GoogleService-Info.plist */; };
+		042392EC265C9BE500D8A6DF /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042392EB265C9BE500D8A6DF /* ChartViewController.swift */; };
 		04544C25255B8321006DBCAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04544C24255B8321006DBCAF /* AppDelegate.swift */; };
 		04544C27255B8321006DBCAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04544C26255B8321006DBCAF /* SceneDelegate.swift */; };
 		04544C29255B8321006DBCAF /* TemperatureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04544C28255B8321006DBCAF /* TemperatureTableViewController.swift */; };
@@ -20,7 +23,6 @@
 		04544C31255B8322006DBCAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04544C2F255B8322006DBCAF /* LaunchScreen.storyboard */; };
 		04544C41255B837A006DBCAF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04544C40255B837A006DBCAF /* HealthKit.framework */; };
 		045ABC74255BB922007A558A /* TemperatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045ABC73255BB922007A558A /* TemperatureCell.swift */; };
-		04CE0EDA2574EB960048846C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CE0ED92574EB960048846C /* GoogleService-Info.plist */; };
 		04CE0EF22574F4320048846C /* Spo2TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0EF12574F4320048846C /* Spo2TableViewController.swift */; };
 		45C736DC02C4E4BB535B4166 /* Pods_TemperatureWitheOxygenSaturation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D45E9E6EFF4DD1532A7412 /* Pods_TemperatureWitheOxygenSaturation.framework */; };
 /* End PBXBuildFile section */
@@ -30,6 +32,9 @@
 		040E962D2652003A003A3D6F /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		040E962F26520046003A3D6F /* PatientInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoViewController.swift; sourceTree = "<group>"; };
 		040E96312652072B003A3D6F /* PatientInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoTableViewCell.swift; sourceTree = "<group>"; };
+		042392E7265C99A800D8A6DF /* AverageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageTableViewController.swift; sourceTree = "<group>"; };
+		042392E9265C9B4B00D8A6DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		042392EB265C9BE500D8A6DF /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		04544C21255B8321006DBCAF /* TemperatureWitheOxygenSaturation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemperatureWitheOxygenSaturation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04544C24255B8321006DBCAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04544C26255B8321006DBCAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +46,6 @@
 		04544C3E255B837A006DBCAF /* TemperatureWitheOxygenSaturation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TemperatureWitheOxygenSaturation.entitlements; sourceTree = "<group>"; };
 		04544C40255B837A006DBCAF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		045ABC73255BB922007A558A /* TemperatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureCell.swift; sourceTree = "<group>"; };
-		04CE0ED92574EB960048846C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04CE0EF12574F4320048846C /* Spo2TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spo2TableViewController.swift; sourceTree = "<group>"; };
 		04D45E9E6EFF4DD1532A7412 /* Pods_TemperatureWitheOxygenSaturation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TemperatureWitheOxygenSaturation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607743730E123211866B0EFC /* Pods-TemperatureWitheOxygenSaturation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemperatureWitheOxygenSaturation.debug.xcconfig"; path = "Target Support Files/Pods-TemperatureWitheOxygenSaturation/Pods-TemperatureWitheOxygenSaturation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				04CE0EF12574F4320048846C /* Spo2TableViewController.swift */,
 				040E962D2652003A003A3D6F /* PatientListViewController.swift */,
 				040E962F26520046003A3D6F /* PatientInfoViewController.swift */,
+				042392E7265C99A800D8A6DF /* AverageTableViewController.swift */,
+				042392EB265C9BE500D8A6DF /* ChartViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -144,7 +150,7 @@
 				04544C3E255B837A006DBCAF /* TemperatureWitheOxygenSaturation.entitlements */,
 				04544C2D255B8322006DBCAF /* Assets.xcassets */,
 				04544C32255B8322006DBCAF /* Info.plist */,
-				04CE0ED92574EB960048846C /* GoogleService-Info.plist */,
+				042392E9265C9B4B00D8A6DF /* GoogleService-Info.plist */,
 				040E962B2651FF13003A3D6F /* CircularProgressBar.swift */,
 			);
 			path = TemperatureWitheOxygenSaturation;
@@ -234,7 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04544C31255B8322006DBCAF /* LaunchScreen.storyboard in Resources */,
-				04CE0EDA2574EB960048846C /* GoogleService-Info.plist in Resources */,
+				042392EA265C9B4B00D8A6DF /* GoogleService-Info.plist in Resources */,
 				04544C2E255B8322006DBCAF /* Assets.xcassets in Resources */,
 				04544C2C255B8321006DBCAF /* Main.storyboard in Resources */,
 			);
@@ -297,7 +303,9 @@
 				045ABC74255BB922007A558A /* TemperatureCell.swift in Sources */,
 				04544C27255B8321006DBCAF /* SceneDelegate.swift in Sources */,
 				040E962C2651FF13003A3D6F /* CircularProgressBar.swift in Sources */,
+				042392E8265C99A800D8A6DF /* AverageTableViewController.swift in Sources */,
 				040E96322652072B003A3D6F /* PatientInfoTableViewCell.swift in Sources */,
+				042392EC265C9BE500D8A6DF /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
