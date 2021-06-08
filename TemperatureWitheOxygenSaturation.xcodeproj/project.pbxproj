@@ -82,6 +82,7 @@
 		040E96232651FC2E003A3D6F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				040E962B2651FF13003A3D6F /* CircularProgressBar.swift */,
 				045ABC73255BB922007A558A /* TemperatureCell.swift */,
 				040E96312652072B003A3D6F /* PatientInfoTableViewCell.swift */,
 			);
@@ -151,7 +152,6 @@
 				04544C2D255B8322006DBCAF /* Assets.xcassets */,
 				04544C32255B8322006DBCAF /* Info.plist */,
 				042392E9265C9B4B00D8A6DF /* GoogleService-Info.plist */,
-				040E962B2651FF13003A3D6F /* CircularProgressBar.swift */,
 			);
 			path = TemperatureWitheOxygenSaturation;
 			sourceTree = "<group>";

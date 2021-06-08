@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class AverageTableViewController: UITableViewController {
 
     var name:String!
+    var info:[String] = ["SpO2","BPM","Temperature"]
+    lazy var infoValue:[String] = ["12","30","36.5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +25,15 @@ class AverageTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0
+        return info.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",for: indexPath)
+        cell.textLabel?.text = info[indexPath.row]
+        cell.detailTextLabel?.text = infoValue[indexPath.row]
+        return cell
     }
 }

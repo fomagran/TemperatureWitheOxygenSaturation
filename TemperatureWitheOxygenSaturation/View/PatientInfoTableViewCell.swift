@@ -12,12 +12,10 @@ class PatientInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var circleView: CircularProgressBar!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var type: UILabel!
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-
     }
     
     func setUp(type:String,number:Int,time:String) {

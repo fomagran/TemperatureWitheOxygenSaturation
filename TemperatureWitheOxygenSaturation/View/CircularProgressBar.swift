@@ -82,6 +82,7 @@ class CircularProgressBar: UIView {
     }
     
     //MARK: Private
+    
     private var label = UILabel()
     private let foregroundLayer = CAShapeLayer()
     private let backgroundLayer = CAShapeLayer()
