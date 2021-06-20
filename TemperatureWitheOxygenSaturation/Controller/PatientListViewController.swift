@@ -25,9 +25,7 @@ class PatientListViewController: UIViewController {
     func getPatientList() {
         ref.getDocuments { snapshot, error in
             guard let snapshot = snapshot else { return }
-            for document in snapshot.documents {
-                self.patients.append(document.documentID)
-            }
+            self.patients = snapshot.documents.map{$0.documentID}
             self.table.reloadData()
         }
     }
@@ -37,6 +35,7 @@ class PatientListViewController: UIViewController {
         
         let ok = UIAlertAction(title: "OK", style: .default) { (ok) in
             self.ref.document(alert.textFields?[0].text ?? "").setData(["bpm":0,"temperature":0,"SpO2":0])
+            self.getPatientList()
         }
         
         alert.addAction(ok)

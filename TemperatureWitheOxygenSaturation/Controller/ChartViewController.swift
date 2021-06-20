@@ -13,7 +13,10 @@ class ChartViewController: UIViewController {
     
     //MARK:- IBOutlets
     
-    var temperatures:[Int]!
+    var collectionRef = Firestore.firestore().collection("Users")
+    var temperatures:[Int] = [100,120,110,90,80,100,200,80,90,100]
+    var bpms:[Int] = []
+    var spo2s:[Int] = []
     var name:String!
     
     @IBOutlet weak var chartView: LineChartView!
@@ -22,9 +25,32 @@ class ChartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = name
-        setChartView()
+        getHeartRate()
+    }
+    
+    func getHeartRate() {
+        collectionRef.document(name).collection("HeartRate").getDocuments { snapshot, error in
+            guard let snapshot = snapshot else {return}
+            for document in snapshot.documents {
+                self.bpms.append(document.get("HeartRate") as! Int)
+                if self.bpms.count == snapshot.documents.count {
+                    self.getSpO2()
+                }
+            }
+        }
+    }
+    
+    func getSpO2() {
+        collectionRef.document(name).collection("SpO2").getDocuments { snapshot, error in
+            guard let snapshot = snapshot else {return}
+            for document in snapshot.documents {
+                self.spo2s.append(document.get("SpO2") as! Int)
+                if self.spo2s.count == snapshot.documents.count {
+                    self.setChartView()
+                }
+            }
+        }
     }
     
     func setChartView() {
@@ -33,59 +59,26 @@ class ChartViewController: UIViewController {
         chartView.chartDescription.enabled = false
         chartView.rightAxis.enabled = false
         chartView.animate(xAxisDuration: 5)
+        chartView.animate(yAxisDuration: 5)
         setDataCount()
     }
     
     func setDataCount() {
         
-        let c1 = ChartDataEntry(x: Double(1), y: 1, icon: .none)
-        let c2 = ChartDataEntry(x: Double(2), y: 2, icon: .none)
-        let c3 = ChartDataEntry(x: Double(3), y: 3, icon: .none)
-        let c4 = ChartDataEntry(x: Double(4), y: 1, icon: .none)
-        let c5 = ChartDataEntry(x: Double(5), y: 2, icon: .none)
-        let c6 = ChartDataEntry(x: Double(6), y: 3, icon: .none)
-        let c7 = ChartDataEntry(x: Double(7), y: 1, icon: .none)
-        let c8 = ChartDataEntry(x: Double(8), y: 2, icon: .none)
-        let c9 = ChartDataEntry(x: Double(9), y: 3, icon: .none)
-        let c10 = ChartDataEntry(x: Double(10), y: 1, icon: .none)
-        let c11 = ChartDataEntry(x: Double(11), y: 2, icon: .none)
-        let c12 = ChartDataEntry(x: Double(12), y: 3, icon: .none)
-        
-        let set1 = LineChartDataSet(entries: [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12], label: "SpO2")
-        
-        var temperatureEntries = [ChartDataEntry]()
-        temperatures.enumerated().forEach {
-            temperatureEntries.append(ChartDataEntry(x: Double($0.offset), y: Double($0.element)))
-        }
-        
-        let set2 = LineChartDataSet(entries: temperatureEntries, label: "Temperature")
-        
-        let q1 = ChartDataEntry(x: Double(1), y: 50, icon: .none)
-        let q2 = ChartDataEntry(x: Double(2), y: 40, icon: .none)
-        let q3 = ChartDataEntry(x: Double(3), y: 60, icon: .none)
-        let q4 = ChartDataEntry(x: Double(4), y: 50, icon: .none)
-        let q5 = ChartDataEntry(x: Double(5), y: 40, icon: .none)
-        let q6 = ChartDataEntry(x: Double(6), y: 60, icon: .none)
-        let q7 = ChartDataEntry(x: Double(7), y: 50, icon: .none)
-        let q8 = ChartDataEntry(x: Double(8), y: 40, icon: .none)
-        let q9 = ChartDataEntry(x: Double(9), y: 60, icon: .none)
-        let q10 = ChartDataEntry(x: Double(10), y: 50, icon: .none)
-        let q11 = ChartDataEntry(x: Double(11), y: 40, icon: .none)
-        let q12 = ChartDataEntry(x: Double(12), y: 60, icon: .none)
-        
-        let set3 = LineChartDataSet(entries: [q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12], label: "BPM")
-        
+        let spO2Entries = spo2s.enumerated().filter{$0.offset < 10}.map{ChartDataEntry(x: Double($0.offset), y: Double($0.element),icon: .none)}
+        let tempEntries = temperatures.enumerated().filter{$0.offset < 10}.map{ChartDataEntry(x: Double($0.offset), y: Double($0.element),icon: .none)}
+        let bpmEntries = bpms.enumerated().filter{$0.offset < 10}.map{ChartDataEntry(x: Double($0.offset), y: Double($0.element),icon: .none)}
+       
+        let set1 = LineChartDataSet(entries: spO2Entries, label: "SpO2")
+        let set2 = LineChartDataSet(entries: tempEntries, label: "Temperature")
+        let set3 = LineChartDataSet(entries: bpmEntries, label: "BPM")
         
         setup(set1)
-        
         setup(set2)
-        
         setup(set3)
         
         let data =  LineChartData(dataSets: [set1,set2,set3])
-        
-        chartView.data = data
-        
+        self.chartView.data = data
     }
     
     private func setup(_ dataSet: LineChartDataSet) {

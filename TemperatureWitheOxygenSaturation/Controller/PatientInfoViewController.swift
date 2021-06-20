@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseDatabase
 import HealthKit
+import FirebaseFirestore
 
 class PatientInfoViewController: UIViewController {
     
@@ -16,7 +17,7 @@ class PatientInfoViewController: UIViewController {
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var footerView: UIView!
     
-    
+    let collectionRef = Firestore.firestore().collection("Users")
     private var temperatureSamples: Array<HKSample> = []
     var name:String!
     var temperatures:[Int] = []
@@ -35,10 +36,15 @@ class PatientInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        ref.observe(DataEventType.value, with: { (snapshot) in
-            let data = snapshot.value as! [String:Int]
-            self.numbers[1] = data["HeartRate"]!
-            self.numbers[0] = data["SpO2"]!
+        ref.child("HeartRate").observe(DataEventType.value, with: { (snapshot) in
+            self.numbers[1] = snapshot.value! as! Int
+            self.collectionRef.document(self.name).collection("HeartRate").addDocument(data: ["HeartRate":snapshot.value!])
+            self.table.reloadData()
+              })
+        
+        ref.child("SpO2").observe(DataEventType.value, with: { (snapshot) in
+            self.numbers[0] = snapshot.value! as! Int
+            self.collectionRef.document(self.name).collection("SpO2").addDocument(data: ["SpO2":snapshot.value!])
             self.table.reloadData()
               })
         
@@ -110,7 +116,7 @@ class PatientInfoViewController: UIViewController {
             vc.name = name
         }else {
             let vc = segue.destination as! ChartViewController
-            vc.temperatures = temperatures
+//            vc.temperatures = temperatures
             vc.name = name
         }
     }
