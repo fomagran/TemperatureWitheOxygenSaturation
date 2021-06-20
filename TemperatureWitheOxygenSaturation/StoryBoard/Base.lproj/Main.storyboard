@@ -186,7 +186,13 @@
                             <constraint firstItem="u0y-2C-pQi" firstAttribute="trailing" secondItem="qFs-bv-bC9" secondAttribute="trailing" id="wjf-bm-y6N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Patient List" id="jS5-d1-jzU"/>
+                    <navigationItem key="navigationItem" title="Patient List" id="jS5-d1-jzU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yFb-Fj-zow">
+                            <connections>
+                                <action selector="tapAddButton:" destination="kQe-1c-Ilk" id="BVj-Gv-kN5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="table" destination="qFs-bv-bC9" id="XIc-4O-ieP"/>
                         <segue destination="gcg-UU-hcC" kind="show" identifier="showPatientInfoViewController" id="f7J-ds-VXR"/>

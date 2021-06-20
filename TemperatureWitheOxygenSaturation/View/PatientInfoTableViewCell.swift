@@ -24,6 +24,12 @@ class PatientInfoTableViewCell: UITableViewCell {
         circleView.setProgress(to: Double(number)/Double(180), withAnimation: true)
         circleView.lineWidth = 30
         self.type.text = type
-        self.time.text = time
+        self.time.text = dateToStringOnlyTime(date: Date())
     }
+    
+    func dateToStringOnlyTime(date:Date) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm:ss"
+           return dateFormatter.string(from: date)
+        }
 }

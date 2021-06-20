@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class PatientInfoViewController: UIViewController {
     
@@ -16,12 +17,19 @@ class PatientInfoViewController: UIViewController {
     
     var name:String!
     let types = ["SpO2","BPM","Temperature"]
-    let numbers = [94,86,36]
+    var numbers = [0,0,0]
     let times = ["15:31:01","15:31:01","15:29:15"]
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ref = Database.database().reference()
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            let data = snapshot.value as! [String:Int]
+            self.numbers[1] = data["HeartRate"]!
+            self.numbers[0] = data["SpO2"]!
+            self.table.reloadData()
+              })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
