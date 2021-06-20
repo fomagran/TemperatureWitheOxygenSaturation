@@ -14,7 +14,7 @@ class ChartViewController: UIViewController {
     //MARK:- IBOutlets
     
     var collectionRef = Firestore.firestore().collection("Users")
-    var temperatures:[Int] = [100,120,110,90,80,100,200,80,90,100]
+    var temperatures:[Int]!
     var bpms:[Int] = []
     var spo2s:[Int] = []
     var name:String!

@@ -114,9 +114,10 @@ class PatientInfoViewController: UIViewController {
         if segue.identifier == "showAverageTableViewController" {
             let vc = segue.destination as! AverageTableViewController
             vc.name = name
+            vc.temperatures = temperatures
         }else {
             let vc = segue.destination as! ChartViewController
-//            vc.temperatures = temperatures
+            vc.temperatures = temperatures
             vc.name = name
         }
     }
