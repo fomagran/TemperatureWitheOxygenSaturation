@@ -12,14 +12,24 @@ class PatientListViewController: UIViewController {
     
     var name:String!
     
-    let patients:[String] = ["안영훈","황석빈","윤재권","곽동하","김진웅","빈지노","나플라","오케이션"]
+    var patients:[String] = []
     
     let ref = Firestore.firestore().collection("Users")
 
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getPatientList()
+    }
+    
+    func getPatientList() {
+        ref.getDocuments { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            for document in snapshot.documents {
+                self.patients.append(document.documentID)
+            }
+            self.table.reloadData()
+        }
     }
     
     @IBAction func tapAddButton(_ sender: Any) {
@@ -59,8 +69,6 @@ extension PatientListViewController:UITableViewDataSource {
         cell.detailTextLabel?.text = "➡️"
         return cell
     }
-    
-    
 }
 
 

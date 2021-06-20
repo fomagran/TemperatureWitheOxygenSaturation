@@ -316,7 +316,13 @@
                             <constraint firstItem="4DQ-9x-O7f" firstAttribute="trailing" secondItem="xdz-BF-atu" secondAttribute="trailing" id="sWe-mJ-94d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bgy-l2-wMk"/>
+                    <navigationItem key="navigationItem" id="bgy-l2-wMk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="FJt-Xk-QVV">
+                            <connections>
+                                <action selector="tapRefreshButton:" destination="gcg-UU-hcC" id="ka6-OO-gnI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dataButton" destination="YqK-eL-eLZ" id="aDE-UA-00a"/>
                         <outlet property="footerView" destination="h9K-NY-l0V" id="c3n-s6-SfA"/>

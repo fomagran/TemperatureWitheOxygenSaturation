@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseDatabase
+import HealthKit
 
 class PatientInfoViewController: UIViewController {
     
@@ -15,10 +16,20 @@ class PatientInfoViewController: UIViewController {
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var footerView: UIView!
     
+    
+    private var temperatureSamples: Array<HKSample> = []
     var name:String!
+    var temperatures:[Int] = []
+    private var kit: HKHealthStore! {
+        return HKHealthStore()
+    }
+    
+    private let queryType = HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
+    private let querySample = HKSampleType.quantityType(forIdentifier: .bodyTemperature)!
+    
+
     let types = ["SpO2","BPM","Temperature"]
     var numbers = [0,0,0]
-    let times = ["15:31:01","15:31:01","15:29:15"]
     var ref: DatabaseReference!
     
     override func viewDidLoad() {
@@ -30,11 +41,76 @@ class PatientInfoViewController: UIViewController {
             self.numbers[0] = data["SpO2"]!
             self.table.reloadData()
               })
+        
+        requestAuthorization()
+    }
+    
+    @IBAction func tapRefreshButton(_ sender: Any) {
+        getTemperatureData()
+        table.reloadData()
+    }
+    
+    
+    func requestAuthorization() {
+        if HKHealthStore.isHealthDataAvailable(){
+            //  Write Authorize
+            let queryTypeArray: Set<HKSampleType> = [queryType]
+            //  Read Authorize
+            let querySampleArray: Set<HKObjectType> = [querySample]
+            
+            kit.requestAuthorization(toShare: queryTypeArray, read: querySampleArray) { (success, error) in
+                if success{
+                    self.getTemperatureData()
+                }
+            }
+        }
+    }
+
+    
+    func getTemperatureData(){
+
+        //Create query object
+        let temperaturesamplequery = HKSampleQuery (sampleType : querySample, // type object to get
+                                                    predicate: nil, // time parameter. If it is empty, time is not limited
+                                                    limit: 100, // get quantity
+                                                    sortDescriptors: [NSSortDescriptor (key: HKSampleSortIdentifierStartDate, ascending: false)]) // the sort method of the acquired data
+        { (query, results, error) in
+            ///After getting the result, the results are returned [hksample]?
+            if let samples = results {
+                //Insert into tableview one by one
+                for sample in samples {
+                    DispatchQueue.main.async {
+                        self.temperatureSamples.append(sample)
+                        let temperature = (sample as! HKQuantitySample).quantity.doubleValue(for: .degreeCelsius())
+                        self.temperatures.append(Int(temperature))
+                        if self.temperatureSamples.count == samples.count {
+                            self.numbers[2] = Int(self.temperatures.last ?? 0)
+                            self.table.reloadData()
+                        }
+                    }
+                }
+            }
+        }
+
+        //Perform query operation
+        kit.execute(temperaturesamplequery)
+    }
+    
+    func getTemperatureAndDate(sample: HKSample) -> (Date, Double) {
+        
+        let quantitySample = sample as! HKQuantitySample
+        let date = sample.startDate
+        let temperature = quantitySample.quantity.doubleValue(for: .degreeCelsius())
+        return (date, temperature)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAverageTableViewController" {
             let vc = segue.destination as! AverageTableViewController
+            vc.name = name
+        }else {
+            let vc = segue.destination as! ChartViewController
+            vc.temperatures = temperatures
             vc.name = name
         }
     }
@@ -61,7 +137,7 @@ extension PatientInfoViewController:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "PatientInfoTableViewCell", for: indexPath) as! PatientInfoTableViewCell
-        cell.setUp(type: types[indexPath.row], number: numbers[indexPath.row], time: times[indexPath.row])
+        cell.setUp(type: types[indexPath.row], number: numbers[indexPath.row])
         return cell
     }
     

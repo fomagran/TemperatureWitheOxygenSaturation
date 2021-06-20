@@ -18,7 +18,7 @@ class PatientInfoTableViewCell: UITableViewCell {
         
     }
     
-    func setUp(type:String,number:Int,time:String) {
+    func setUp(type:String,number:Int) {
         circleView.labelSize = 40
         circleView.safePercent = number
         circleView.setProgress(to: Double(number)/Double(180), withAnimation: true)

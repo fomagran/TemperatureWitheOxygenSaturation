@@ -50,14 +50,6 @@ class TemperatureTableViewController: UITableViewController {
 
     
     func getTemperatureData(){
-        
-        /*
-        //Time query criteria object
-        let calendar = Calendar.current
-        let todayStart =  calendar.date(from: calendar.dateComponents([.year,.month,.day], from: Date()))
-        let dayPredicate = HKQuery.predicateForSamples(withStart: todayStart,
-                                                       end: Date(timeInterval: 24*60*60,since: todayStart!),
-                                                       options: HKQueryOptions.strictStartDate) */
 
         //Create query object
         let temperaturesamplequery = HKSampleQuery (sampleType : querySample, // type object to get

@@ -11,9 +11,10 @@ import FirebaseFirestore
 
 class ChartViewController: UIViewController {
     
-    var name:String!
-    
     //MARK:- IBOutlets
+    
+    var temperatures:[Int]!
+    var name:String!
     
     @IBOutlet weak var chartView: LineChartView!
     
@@ -23,10 +24,7 @@ class ChartViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = name
-
         setChartView()
-        
-        
     }
     
     func setChartView() {
@@ -55,20 +53,12 @@ class ChartViewController: UIViewController {
         
         let set1 = LineChartDataSet(entries: [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12], label: "SpO2")
         
-        let d1 = ChartDataEntry(x: Double(1), y: 10, icon: .none)
-        let d2 = ChartDataEntry(x: Double(2), y: 20, icon: .none)
-        let d3 = ChartDataEntry(x: Double(3), y: 30, icon: .none)
-        let d4 = ChartDataEntry(x: Double(4), y: 10, icon: .none)
-        let d5 = ChartDataEntry(x: Double(5), y: 20, icon: .none)
-        let d6 = ChartDataEntry(x: Double(6), y: 30, icon: .none)
-        let d7 = ChartDataEntry(x: Double(7), y: 10, icon: .none)
-        let d8 = ChartDataEntry(x: Double(8), y: 20, icon: .none)
-        let d9 = ChartDataEntry(x: Double(9), y: 30, icon: .none)
-        let d10 = ChartDataEntry(x: Double(10), y: 10, icon: .none)
-        let d11 = ChartDataEntry(x: Double(11), y: 20, icon: .none)
-        let d12 = ChartDataEntry(x: Double(12), y: 30, icon: .none)
+        var temperatureEntries = [ChartDataEntry]()
+        temperatures.enumerated().forEach {
+            temperatureEntries.append(ChartDataEntry(x: Double($0.offset), y: Double($0.element)))
+        }
         
-        let set2 = LineChartDataSet(entries: [d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12], label: "Temperature")
+        let set2 = LineChartDataSet(entries: temperatureEntries, label: "Temperature")
         
         let q1 = ChartDataEntry(x: Double(1), y: 50, icon: .none)
         let q2 = ChartDataEntry(x: Double(2), y: 40, icon: .none)
